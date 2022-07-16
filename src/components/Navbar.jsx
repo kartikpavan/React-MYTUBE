@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsPlusSquareFill } from "react-icons/bs";
@@ -46,9 +46,9 @@ const Navbar = ({ user }) => {
 							<Link to={""}>My Account</Link>
 						</li>
 						<li>
-							<a>
+							<Link to={""}>
 								Log Out <MdLogout size={20} />
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</div>

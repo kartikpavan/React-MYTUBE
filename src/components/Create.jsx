@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Spinner from "./Spinner";
 
 import { AiOutlineDown, AiOutlineCloudUpload } from "react-icons/ai";
@@ -165,7 +165,7 @@ const Create = ({ categories, toast, user }) => {
 											value={data.name}
 										>
 											{({ selected }) => (
-												<Fragment>
+												<div>
 													<span
 														className={` truncate flex items-center gap-4 ${
 															selected ? "font-medium" : "font-normal"
@@ -181,7 +181,7 @@ const Create = ({ categories, toast, user }) => {
 															/>
 														</span>
 													) : null}
-												</Fragment>
+												</div>
 											)}
 										</Listbox.Option>
 									))}
