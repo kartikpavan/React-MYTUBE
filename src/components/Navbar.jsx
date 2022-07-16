@@ -24,8 +24,11 @@ const Navbar = ({ user }) => {
 			<div className="flex justify-center items-center gap-8">
 				{/* create Button */}
 				<Link to="/create">
-					<div className="flex justify-center items-center bg-neutral hover:shadow-lg hover:scale-110 ease-in-out duration-300 ">
-						<BsPlusSquareFill size={32} />
+					<div className="flex justify-center items-center hover:shadow-lg hover:scale-110 ease-in-out duration-300 ">
+						<div className="flex items-center justify-center gap-2 p-2">
+							<p>Upload</p>
+							<BsPlusSquareFill size={32} />
+						</div>
 					</div>
 				</Link>
 

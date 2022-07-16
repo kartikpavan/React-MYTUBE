@@ -113,6 +113,7 @@ const Create = ({ categories, toast, user }) => {
 				};
 
 				await setDoc(doc(db, "videos", `${Date.now()}`), data);
+				toast.success("Video is successfully uploaded to our servers");
 				setLoading(false);
 				navigate("/", { replace: true });
 			}
