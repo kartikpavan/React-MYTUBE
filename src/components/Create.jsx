@@ -23,7 +23,7 @@ const Create = ({ categories, toast, user }) => {
 	console.log(user);
 	const [title, setTitle] = useState("");
 	const [location, setLocation] = useState("");
-	const [category, setCategory] = useState("");
+	const [category, setCategory] = useState("Choose a category");
 	const [videoAsset, setVideoAsset] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(1);
@@ -141,7 +141,7 @@ const Create = ({ categories, toast, user }) => {
 					<Listbox value={category} onChange={setCategory} className="w-full z-50">
 						<div className="relative mt-1">
 							<Listbox.Button className="relative w-full cursor-default rounded-lg bg-primary py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-								<span className="block truncate text-lg">Choose a category</span>
+								<span className="block truncate text-lg">{category}</span>
 								<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 									<AiOutlineDown size={22} />
 								</span>
@@ -166,7 +166,7 @@ const Create = ({ categories, toast, user }) => {
 											value={data.name}
 										>
 											{({ selected }) => (
-												<div>
+												<>
 													<span
 														className={` truncate flex items-center gap-4 ${
 															selected ? "font-medium" : "font-normal"
@@ -182,7 +182,7 @@ const Create = ({ categories, toast, user }) => {
 															/>
 														</span>
 													) : null}
-												</div>
+												</>
 											)}
 										</Listbox.Option>
 									))}
