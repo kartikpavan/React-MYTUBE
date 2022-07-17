@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Home = ({ user }) => {
 	console.log(user);
+
 	return (
 		<div>
 			<Navbar user={user} />
