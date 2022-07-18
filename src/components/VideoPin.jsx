@@ -6,6 +6,8 @@ import { getFirestore } from "firebase/firestore";
 import { getUserInfo } from "../utils/fetchData";
 import moment from "moment";
 
+const avatar = `https://ak.picdn.net/contributors/3038285/avatars/thumb.jpg?t=165619599`;
+
 const VideoPin = ({ data }) => {
 	// Firestore database instance
 	const firestoreDb = getFirestore(firebaseApp);
@@ -36,13 +38,15 @@ const VideoPin = ({ data }) => {
 					<p>{data.title}</p>
 					<Link to={`/userDetail/${userId}`}>
 						<img
-							src={userInfo?.photoURL}
+							src={userInfo?.photoURL ? userInfo.photoURL : avatar}
 							alt="/"
 							className="rounded-full w-[50px] h-[50px] border-2 border-slate-200  "
 						/>
 					</Link>
 				</div>
-				<p className="text-sm italic font-semibold text-gray-500">{moment(new Date(parseInt(data.id)).toISOString()).fromNow()}</p>
+				<p className="text-sm italic font-semibold text-gray-500">
+					{moment(new Date(parseInt(data.id)).toISOString()).fromNow()}
+				</p>
 			</div>
 		</div>
 	);

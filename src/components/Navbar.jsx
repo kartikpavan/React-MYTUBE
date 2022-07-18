@@ -1,11 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsPlusSquareFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 
 const Navbar = ({ user }) => {
+	const navigate = useNavigate();
+	const signOut = () => {
+		localStorage.clear();
+		navigate("/login", { replace: true });
+	};
+
 	return (
 		<div className="flex justify-between items-center w-full  px-4">
 			<Link to="/">
@@ -48,7 +54,7 @@ const Navbar = ({ user }) => {
 						<li>
 							<Link to={""}>My Account</Link>
 						</li>
-						<li>
+						<li onClick={signOut}>
 							<Link to={""}>
 								Log Out <MdLogout size={20} />
 							</Link>

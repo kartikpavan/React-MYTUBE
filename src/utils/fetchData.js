@@ -11,7 +11,6 @@ export const getAllFeeds = async (firestoreDb) => {
 };
 
 //fetch a user information using userId
-
 export const getUserInfo = async (firestoreDb, userId) => {
 	const userRef = doc(firestoreDb, "users", userId);
 	const userSnap = await getDoc(userRef);
@@ -20,5 +19,17 @@ export const getUserInfo = async (firestoreDb, userId) => {
 		return userSnap.data();
 	} else {
 		return "no such document exists";
+	}
+};
+
+//fetch the specific video using the params
+export const getSpecificVideo = async (firestoreDb, videoID) => {
+	const videoRef = doc(firestoreDb, "videos", videoID);
+	const videoSnap = await getDoc(videoRef);
+
+	if (videoSnap.exists()) {
+		return videoSnap.data();
+	} else {
+		return "no such video exists";
 	}
 };
