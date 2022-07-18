@@ -7,6 +7,8 @@ import Create from "../components/Create";
 import Feed from "../components/Feed";
 import Navbar from "../components/Navbar";
 import VideoPin from "../components/VideoPin";
+import VideoDetails from "../components/VideoDetails";
+import UserProfile from "../components/UserProfile";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +19,7 @@ const Home = ({ user }) => {
 	return (
 		<div>
 			<Navbar user={user} />
-			<div className="flex w-full">
+			<div className="flex w-[100vw] ">
 				<div className="flex flex-col justify-start p-4 mt-4">
 					{categories &&
 						categories.map((data) => {
@@ -43,7 +45,11 @@ const Home = ({ user }) => {
 							path="/create"
 							element={<Create categories={categories} toast={toast} user={user} />}
 						/>
-						<Route path="/videoDetail/:videoID" element={<VideoPin toast={toast} />} />
+						<Route
+							path="/videoDetail/:videoID"
+							element={<VideoDetails toast={toast} />}
+						/>
+						<Route path="/userDetail/:userID" element={<UserProfile />} />
 					</Routes>
 				</div>
 			</div>
