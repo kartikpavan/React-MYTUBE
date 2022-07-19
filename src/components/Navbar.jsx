@@ -17,7 +17,7 @@ const Navbar = ({ user }) => {
 			<Link to="/">
 				<img src={logo} alt="/" className="w-16 md:w-24 h-auto" />
 			</Link>
-			<div className="w-[60vw] relative shadow-lg">
+			<div className="w-[60vw] relative shadow-lg hidden md:block">
 				<input
 					type="text"
 					name=""

@@ -19,8 +19,8 @@ const Home = ({ user }) => {
 	return (
 		<div>
 			<Navbar user={user} />
-			<div className="flex w-[100vw] ">
-				<div className="flex flex-col justify-start p-4 mt-4">
+			<div className="flex w-[100vw] flex-col sm:flex-row ">
+				<div className="flex flex-row  justify-between sm:flex-col sm:gap-0 sm:justify-start p-4 mt-4">
 					{categories &&
 						categories.map((data) => {
 							return <Category key={data.id} data={data} />;
