@@ -26,7 +26,7 @@ const Home = ({ user }) => {
 							return <Category key={data.id} data={data} />;
 						})}
 					<ToastContainer
-						position="top-right"
+						position="bottom-center"
 						autoClose={5000}
 						hideProgressBar={false}
 						newestOnTop={false}

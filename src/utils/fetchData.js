@@ -1,5 +1,5 @@
 import { firebaseApp } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
 
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
@@ -32,4 +32,9 @@ export const getSpecificVideo = async (firestoreDb, videoID) => {
 	} else {
 		return "no such video exists";
 	}
+};
+
+//delete a particular video using the params
+export const deleteVideo = async (firestoreDb, videoID) => {
+	await deleteDoc(doc(firestoreDb, "videos", videoID));
 };
