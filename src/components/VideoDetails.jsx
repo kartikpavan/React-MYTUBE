@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { AiFillHome, AiFillDelete, AiOutlineCloudDownload } from "react-icons/ai";
 import { FcApproval } from "react-icons/fc";
-import { getSpecificVideo, getUserInfo, deleteVideo } from "../utils/fetchData";
+import { getSpecificVideo, getUserInfo, deleteVideo, getRecommendedFeed } from "../utils/fetchData";
 import { firebaseApp } from "../firebase";
 import { getFirestore } from "firebase/firestore";
 import Spinner from "./Spinner";
@@ -12,6 +12,7 @@ import moment from "moment";
 import { fetchUserDetails } from "../utils/fetchUser";
 // MODAL
 import { Dialog, Transition } from "@headlessui/react";
+import RecommendedVideos from "./RecommendedVideos";
 
 const avatar = `https://ak.picdn.net/contributors/3038285/avatars/thumb.jpg?t=165619599`;
 
@@ -22,6 +23,7 @@ const VideoDetails = ({ toast }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [videoInfo, setVideoInfo] = useState(null);
 	const [userInfo, setUserInfo] = useState(null);
+	const [feeds, setFeeds] = useState(null);
 	const [localUser] = fetchUserDetails();
 	const navigate = useNavigate();
 
@@ -41,6 +43,10 @@ const VideoDetails = ({ toast }) => {
 			setIsLoading(true);
 			getSpecificVideo(firestoreDb, videoID).then((data) => {
 				setVideoInfo(data);
+
+				getRecommendedFeed(firestoreDb, data.category, videoID).then((feed) => {
+					setFeeds(feed);
+				});
 
 				getUserInfo(firestoreDb, data.userId).then((user) => {
 					setUserInfo(user);
@@ -204,6 +210,12 @@ const VideoDetails = ({ toast }) => {
 					)}
 				</div>
 			</div>
+			{feeds && (
+				<div className="flex flex-col w-full my-4">
+					<p className="text-lg md:text-xl font-bold">Recommended Videos</p>
+					<RecommendedVideos feeds={feeds} />
+				</div>
+			)}
 		</main>
 	);
 };

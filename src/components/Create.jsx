@@ -111,7 +111,7 @@ const Create = ({ categories, toast, user }) => {
 					location: location,
 					videoUrl: videoAsset,
 				};
-
+				console.log(data);
 				await setDoc(doc(db, "videos", `${Date.now()}`), data);
 				toast.success("Video is successfully uploaded to our servers");
 				setLoading(false);

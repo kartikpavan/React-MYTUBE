@@ -1,7 +1,7 @@
 import { firebaseApp } from "../firebase";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
 
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 
 //fetch all docs from firebase
 export const getAllFeeds = async (firestoreDb) => {
@@ -37,4 +37,18 @@ export const getSpecificVideo = async (firestoreDb, videoID) => {
 //delete a particular video using the params
 export const deleteVideo = async (firestoreDb, videoID) => {
 	await deleteDoc(doc(firestoreDb, "videos", videoID));
+};
+
+// fetch a video except one that is being displayed to the user
+export const getRecommendedFeed = async (firestoreDb, categoryId, videoId) => {
+	//query method is used to sort data in ascending/desc order
+	const feeds = await getDocs(
+		query(
+			collection(firestoreDb, "videos"),
+			where("category", "==", categoryId),
+			where("id", "!=", videoId),
+			orderBy("id", "desc")
+		)
+	);
+	return feeds.docs.map((doc) => doc.data());
 };

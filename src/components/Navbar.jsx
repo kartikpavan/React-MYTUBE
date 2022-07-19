@@ -8,8 +8,9 @@ import { MdLogout } from "react-icons/md";
 const Navbar = ({ user }) => {
 	const navigate = useNavigate();
 	const signOut = () => {
-		localStorage.clear();
+		window.localStorage.clear();
 		navigate("/login", { replace: true });
+		window.location.reload();
 	};
 
 	return (
@@ -52,7 +53,7 @@ const Navbar = ({ user }) => {
 						className="dropdown-content menu p-2 shadow-xl bg-base-300 rounded-box w-52"
 					>
 						<li>
-							<Link to={""}>My Account</Link>
+							<Link to={`/userDetail/${user?.uid}`}>My Account</Link>
 						</li>
 						<li onClick={signOut}>
 							<Link to={""}>

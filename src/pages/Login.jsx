@@ -27,6 +27,7 @@ const Login = () => {
 		//* sending user details to firebase firestore
 		await setDoc(doc(db, "users", providerData[0].uid), providerData[0]);
 		navigate("/", { replace: true });
+		window.location.reload();
 	};
 
 	return (
