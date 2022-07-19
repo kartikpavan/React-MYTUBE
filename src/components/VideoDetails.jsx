@@ -190,10 +190,15 @@ const VideoDetails = ({ toast }) => {
 									</div>
 								)}
 
-								<button className="btn btn-primary flex justify-between items-center max-w-[230px] w-full">
+								<a
+									className="btn btn-primary flex justify-between items-center max-w-[230px] w-full"
+									download
+									href={videoInfo?.videoUrl}
+									onClick={(e) => e.stopPropagation()}
+								>
 									<AiOutlineCloudDownload size={32} />
 									<p className="text-lg font-bold"> Download Now</p>
-								</button>
+								</a>
 							</div>
 						</div>
 					)}
