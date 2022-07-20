@@ -52,3 +52,16 @@ export const getRecommendedFeed = async (firestoreDb, categoryId, videoId) => {
 	);
 	return feeds.docs.map((doc) => doc.data());
 };
+
+//fetch user uploaded videos
+export const getUserUploadedVideos = async (firestoreDb, userId) => {
+	//query method is used to sort data in ascending/desc order
+	const feeds = await getDocs(
+		query(
+			collection(firestoreDb, "videos"),
+			where("userId", "==", userId),
+			orderBy("id", "desc")
+		)
+	);
+	return feeds.docs.map((doc) => doc.data());
+};

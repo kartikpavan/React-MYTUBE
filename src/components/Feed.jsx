@@ -15,7 +15,6 @@ const Feed = () => {
 	useEffect(() => {
 		setLoading(true);
 		getAllFeeds(firestoreDb).then((data) => {
-			console.log(data);
 			setFeeds(data);
 			setLoading(false);
 		});

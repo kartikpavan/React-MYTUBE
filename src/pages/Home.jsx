@@ -14,8 +14,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Home = ({ user }) => {
-	console.log(user);
-
 	return (
 		<div>
 			<Navbar user={user} />
@@ -49,7 +47,7 @@ const Home = ({ user }) => {
 							path="/videoDetail/:videoID"
 							element={<VideoDetails toast={toast} />}
 						/>
-						<Route path="/userDetail/:userID" element={<UserProfile />} />
+						<Route path="/userDetail/:userId" element={<UserProfile />} />
 					</Routes>
 				</div>
 			</div>
