@@ -17,24 +17,24 @@ const Home = ({ user }) => {
 	return (
 		<div>
 			<Navbar user={user} />
-			<div className="flex w-[100vw] flex-col sm:flex-row gap-8">
+			<div className="flex w-[100vw] flex-col sm:flex-row gap-0 sm:gap-4">
 				<div className="flex flex-row  justify-between sm:flex-col sm:gap-0 sm:justify-start p-4 mt-4">
 					{categories &&
 						categories.map((data) => {
 							return <Category key={data.id} data={data} />;
 						})}
-					<ToastContainer
-						position="bottom-center"
-						autoClose={2000}
-						hideProgressBar={false}
-						newestOnTop={false}
-						closeOnClick
-						rtl={false}
-						pauseOnFocusLoss
-						draggable
-						pauseOnHover
-					/>
 				</div>
+				<ToastContainer
+					position="bottom-center"
+					autoClose={2000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+				/>
 				<div className="flex w-full justify-center items-center px-4">
 					<Routes>
 						<Route path="/" element={<Feed toast={toast} />} />
