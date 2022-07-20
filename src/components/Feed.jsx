@@ -4,7 +4,9 @@ import VideoPin from "./VideoPin";
 
 import { firebaseApp } from "../firebase";
 import { getFirestore } from "firebase/firestore";
-import { getAllFeeds } from "../utils/fetchData";
+import { getAllFeeds, getCategoryWiseFeeds } from "../utils/fetchData";
+import { useParams } from "react-router-dom";
+import NotFound from "./NotFound";
 
 const Feed = () => {
 	// Firestore database instance
@@ -12,17 +14,27 @@ const Feed = () => {
 	const [feeds, setFeeds] = useState("");
 	const [loading, setLoading] = useState(false);
 
+	const { categoryID } = useParams();
+
 	useEffect(() => {
 		setLoading(true);
-		getAllFeeds(firestoreDb).then((data) => {
-			setFeeds(data);
-			setLoading(false);
-		});
-	}, []);
+		if (categoryID) {
+			getCategoryWiseFeeds(firestoreDb, categoryID).then((data) => {
+				setFeeds(data);
+				setLoading(false);
+			});
+		} else {
+			getAllFeeds(firestoreDb).then((data) => {
+				setFeeds(data);
+				setLoading(false);
+			});
+		}
+	}, [categoryID]);
 
 	if (loading) {
 		return <Spinner />;
 	}
+	if (!feeds.length > 0) return <NotFound />;
 
 	return (
 		<div className="max-w-[100vw] w-full p-4  grid grid-cols-1 sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">

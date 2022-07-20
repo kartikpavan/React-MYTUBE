@@ -17,7 +17,7 @@ const Home = ({ user }) => {
 	return (
 		<div>
 			<Navbar user={user} />
-			<div className="flex w-[100vw] flex-col sm:flex-row ">
+			<div className="flex w-[100vw] flex-col sm:flex-row gap-8">
 				<div className="flex flex-row  justify-between sm:flex-col sm:gap-0 sm:justify-start p-4 mt-4">
 					{categories &&
 						categories.map((data) => {
@@ -25,7 +25,7 @@ const Home = ({ user }) => {
 						})}
 					<ToastContainer
 						position="bottom-center"
-						autoClose={5000}
+						autoClose={2000}
 						hideProgressBar={false}
 						newestOnTop={false}
 						closeOnClick

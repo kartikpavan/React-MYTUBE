@@ -39,7 +39,7 @@ export const deleteVideo = async (firestoreDb, videoID) => {
 	await deleteDoc(doc(firestoreDb, "videos", videoID));
 };
 
-// fetch a video except one that is being displayed to the user
+// recommended videos
 export const getRecommendedFeed = async (firestoreDb, categoryId, videoId) => {
 	//query method is used to sort data in ascending/desc order
 	const feeds = await getDocs(
@@ -60,6 +60,19 @@ export const getUserUploadedVideos = async (firestoreDb, userId) => {
 		query(
 			collection(firestoreDb, "videos"),
 			where("userId", "==", userId),
+			orderBy("id", "desc")
+		)
+	);
+	return feeds.docs.map((doc) => doc.data());
+};
+
+// category wise feeds
+export const getCategoryWiseFeeds = async (firestoreDb, categoryId) => {
+	//query method is used to sort data in ascending/desc order
+	const feeds = await getDocs(
+		query(
+			collection(firestoreDb, "videos"),
+			where("category", "==", categoryId),
 			orderBy("id", "desc")
 		)
 	);
