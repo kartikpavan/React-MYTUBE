@@ -1,6 +1,4 @@
-import { firebaseApp } from "../firebase";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
-
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 
 //fetch all docs from firebase

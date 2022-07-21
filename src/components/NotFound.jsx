@@ -9,7 +9,11 @@ const NotFound = () => {
 				Resource Not Found
 			</div>
 			<button className="mt-5">
-				<a className="relative inline-block text-sm font-medium text-primary group  focus:outline-none focus:ring">
+				<a
+					href={"/"}
+					rel="noreferrer"
+					className="relative inline-block text-sm font-medium text-primary group     focus:outline-none focus:ring"
+				>
 					<span className="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 bg-primary group-hover:translate-y-0 group-hover:translate-x-0"></span>
 
 					<Link to="/">

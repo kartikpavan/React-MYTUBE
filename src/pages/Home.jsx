@@ -6,7 +6,6 @@ import Category from "../components/Category";
 import Create from "../components/Create";
 import Feed from "../components/Feed";
 import Navbar from "../components/Navbar";
-import VideoPin from "../components/VideoPin";
 import VideoDetails from "../components/VideoDetails";
 import UserProfile from "../components/UserProfile";
 

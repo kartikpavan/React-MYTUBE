@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Spinner from "./Spinner";
-import VideoPin from "./VideoPin";
+import React from "react";
 
-import { firebaseApp } from "../firebase";
-import { getFirestore } from "firebase/firestore";
-import { getAllFeeds } from "../utils/fetchData";
+import VideoPin from "./VideoPin";
 
 const RecommendedVideos = ({ feeds }) => {
 	return (
